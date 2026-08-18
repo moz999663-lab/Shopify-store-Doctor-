@@ -8,6 +8,8 @@ import { authRoutes } from './routes/auth.routes';
 import { healthRoutes } from './routes/health.routes';
 import { syncRoutes } from './routes/sync.routes';
 import { webhookRoutes } from './routes/webhook.routes';
+import { profitRoutes } from './routes/profit.routes';
+import { diagnosticRoutes } from './routes/diagnostic.routes';
 
 export async function initializeApp() {
   const app = express();
@@ -31,6 +33,8 @@ export async function initializeApp() {
   app.use('/api/auth', authRoutes);
   app.use('/api/sync', syncRoutes);
   app.use('/api/webhooks', webhookRoutes);
+  app.use('/api/profit', profitRoutes);
+  app.use('/api/diagnostics', diagnosticRoutes);
 
   // معالج الأخطاء (يجب أن يكون آخر middleware)
   app.use(errorHandler);
