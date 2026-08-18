@@ -6,6 +6,8 @@ import { errorHandler } from './middleware/error-handler';
 import { requestLogger } from './middleware/request-logger';
 import { authRoutes } from './routes/auth.routes';
 import { healthRoutes } from './routes/health.routes';
+import { syncRoutes } from './routes/sync.routes';
+import { webhookRoutes } from './routes/webhook.routes';
 
 export async function initializeApp() {
   const app = express();
@@ -27,6 +29,8 @@ export async function initializeApp() {
   // المسارات
   app.use('/api/health', healthRoutes);
   app.use('/api/auth', authRoutes);
+  app.use('/api/sync', syncRoutes);
+  app.use('/api/webhooks', webhookRoutes);
 
   // معالج الأخطاء (يجب أن يكون آخر middleware)
   app.use(errorHandler);
